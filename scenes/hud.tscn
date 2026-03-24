@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://hlxf2vgaai2k"]
+
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_tut2x"]
+[ext_resource type="FontFile" uid="uid://bot2r4qwl2gtn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_5wmt6"]
+[ext_resource type="Script" path="res://scripts/stopwatch.gd" id="3_yao17"]
+[ext_resource type="Texture2D" uid="uid://dym3vakxme32p" path="res://assets/ui/ui_coin.png" id="4_px4mr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tmarc"]
+font = ExtResource("2_5wmt6")
+font_size = 14
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0f0rj"]
+font = ExtResource("2_5wmt6")
+font_size = 18
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0eev3"]
+font = ExtResource("2_5wmt6")
+font_size = 14
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer" groups=["coin_collected_listeners", "level_complete_listeners"]]
+script = ExtResource("1_tut2x")
+
+[node name="LevelName" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 115.0
+offset_bottom = 21.0
+text = "Level 0"
+label_settings = SubResource("LabelSettings_tmarc")
+
+[node name="Stopwatch" type="Label" parent="." groups=["level_complete_listeners"]]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.5
+offset_top = 4.0
+offset_right = 47.5
+offset_bottom = 27.0
+grow_horizontal = 2
+pivot_offset = Vector2(39.5, 0)
+text = "00:00:000"
+label_settings = SubResource("LabelSettings_0f0rj")
+horizontal_alignment = 1
+script = ExtResource("3_yao17")
+
+[node name="Coins" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_top = 4.0
+offset_right = -2.0
+offset_bottom = 20.0
+grow_horizontal = 0
+pivot_offset = Vector2(52, -4)
+
+[node name="Collected" type="Label" parent="Coins"]
+layout_mode = 2
+text = "1/3"
+label_settings = SubResource("LabelSettings_0eev3")
+
+[node name="TextureRect" type="TextureRect" parent="Coins"]
+layout_mode = 2
+texture = ExtResource("4_px4mr")
+stretch_mode = 3

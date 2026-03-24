@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://j7lxaoaejouc"]
+
+[ext_resource type="Script" path="res://scripts/gameobjs/moving_platform.gd" id="1_x15xk"]
+[ext_resource type="Texture2D" uid="uid://cqrsqbujal5rb" path="res://assets/sprites/tilemap_city_scaled_2x.png" id="2_y70if"]
+
+[sub_resource type="Animation" id="Animation_x0t7u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xjy4s"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-1.56, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86vfk"]
+_data = {
+"RESET": SubResource("Animation_x0t7u"),
+"move": SubResource("Animation_xjy4s")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipx1s"]
+size = Vector2(36, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lt1u7"]
+polygon = PackedVector2Array(-18, -8, -18, -1, 18, -1, 18, -8)
+
+[node name="MovingPlatform" type="Path2D"]
+script = ExtResource("1_x15xk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+metadata/_edit_lock_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_86vfk")
+}
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_ipx1s")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("2_y70if")
+region_enabled = true
+region_rect = Rect2(40, 200, 40, 16)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatableBody2D"]
+occluder = SubResource("OccluderPolygon2D_lt1u7")

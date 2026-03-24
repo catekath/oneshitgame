@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://0vlyoei1t8nw"]
+
+[ext_resource type="PackedScene" uid="uid://qququp3171jh" path="res://scenes/gameobjs/spikes/spikes.tscn" id="1_7eshp"]
+
+[node name="Spikes_Down" instance=ExtResource("1_7eshp")]
+rotation = 3.14159
+
+[node name="Sprite2D" parent="." index="0"]
+flip_h = true
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(-20, 6, -15, -6, 15, -6, 20, 6)

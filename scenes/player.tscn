@@ -1,0 +1,255 @@
+[gd_scene load_steps=16 format=3 uid="uid://dskkedg0egljf"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_tnf3b"]
+[ext_resource type="Texture2D" uid="uid://hagtsneisnls" path="res://assets/sprites/player.png" id="2_dqjs2"]
+[ext_resource type="AudioStream" uid="uid://btu50sgiq844" path="res://assets/sounds/step_01.mp3" id="3_vkx6v"]
+[ext_resource type="AudioStream" uid="uid://dbntxd3wevb3o" path="res://assets/sounds/step_02.mp3" id="4_skafm"]
+
+[sub_resource type="Animation" id="Animation_dqf0v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ajbdl"]
+resource_name = "idle1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_47v2g"]
+resource_name = "idle2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3vkpr"]
+resource_name = "idle3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_f6ylx"]
+resource_name = "idle4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_a71j3"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(5, 4), Vector2i(6, 4), Vector2i(7, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_1edxq"]
+resource_name = "run2"
+length = 0.6
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(5, 4), Vector2i(6, 4), Vector2i(7, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_3a7ov"]
+resource_name = "standing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(5, 8), Vector2i(6, 8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3thj"]
+_data = {
+"RESET": SubResource("Animation_dqf0v"),
+"idle1": SubResource("Animation_ajbdl"),
+"idle2": SubResource("Animation_47v2g"),
+"idle3": SubResource("Animation_3vkpr"),
+"idle4": SubResource("Animation_f6ylx"),
+"run": SubResource("Animation_a71j3"),
+"run2": SubResource("Animation_1edxq"),
+"standing": SubResource("Animation_3a7ov")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ai18h"]
+size = Vector2(1.2, 0.818182)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eekj2"]
+playback_mode = 1
+random_pitch = 1.05
+random_volume_offset_db = 0.5
+streams_count = 2
+stream_0/stream = ExtResource("3_vkx6v")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_skafm")
+stream_1/weight = 1.0
+
+[node name="Player" type="CharacterBody2D" groups=["level_complete_listeners"]]
+collision_layer = 2
+collision_mask = 7
+safe_margin = 0.01
+script = ExtResource("1_tnf3b")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-32, -64)
+scale = Vector2(2, 2)
+texture = ExtResource("2_dqjs2")
+centered = false
+hframes = 8
+vframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_k3thj")
+}
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.06
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.18
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(20, 22)
+shape = SubResource("RectangleShape2D_ai18h")
+
+[node name="JumpParticles" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, 2)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(5, 1)
+direction = Vector2(0, -1)
+spread = 105.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 16.0
+initial_velocity_max = 20.0
+scale_amount_max = 2.0
+color = Color(0.419608, 0.419608, 0.419608, 1)
+
+[node name="TurnParticlesGround" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(1, 0)
+emitting = false
+amount = 20
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(5, 1)
+direction = Vector2(-1, -2)
+spread = 105.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 18.0
+initial_velocity_max = 18.0
+scale_amount_max = 2.0
+color = Color(0.419608, 0.419608, 0.419608, 1)
+
+[node name="StepTop" type="RayCast2D" parent="."]
+target_position = Vector2(13, 0)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="StepBottom" type="RayCast2D" parent="."]
+target_position = Vector2(13, 0)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="StepMeasure" type="RayCast2D" parent="."]
+target_position = Vector2(13, 0)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="StepSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_eekj2")
+pitch_scale = 1.05
+bus = &"SFX"
+
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

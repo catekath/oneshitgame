@@ -1,0 +1,160 @@
+[gd_scene load_steps=11 format=3 uid="uid://efpxwwc6rw2r"]
+
+[ext_resource type="Script" path="res://scripts/menu/ui_main_menu.gd" id="1_eyiso"]
+[ext_resource type="Shader" path="res://scripts/shaders/ui_background.gdshader" id="4_qtbne"]
+[ext_resource type="Texture2D" uid="uid://cqgqnl6swxkts" path="res://assets/ui/ui_background.png" id="4_shfs0"]
+[ext_resource type="FontFile" uid="uid://bot2r4qwl2gtn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="4_tja8x"]
+[ext_resource type="Texture2D" uid="uid://cwirbw5pyakq6" path="res://assets/ui/buttons/Button_Dark (3).png" id="5_deo5g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njstw"]
+shader = ExtResource("4_qtbne")
+shader_parameter/octave_count = 10
+shader_parameter/amp_start = 0.5
+shader_parameter/amp_coeff = 0.5
+shader_parameter/freq_coeff = 2.0
+shader_parameter/shift_coeff = 0.2
+shader_parameter/speed = 0.6
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ji2m7"]
+texture = ExtResource("5_deo5g")
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.882353)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqwqu"]
+texture = ExtResource("5_deo5g")
+expand_margin_left = 1.0
+expand_margin_top = 4.0
+expand_margin_right = 1.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkd00"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ex2i"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eyiso")
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_njstw")
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("4_shfs0")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 26.0
+offset_right = 144.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.360784, 0.117647, 0.745098, 1)
+theme_override_fonts/font = ExtResource("4_tja8x")
+theme_override_font_sizes/font_size = 28
+text = "  Return Nowhere.."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -152.0
+offset_right = 66.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_tja8x")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_ji2m7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqwqu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bkd00")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4ex2i")
+text = "Play"
+
+[node name="SelectLevelButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_tja8x")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_ji2m7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqwqu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bkd00")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4ex2i")
+text = "Select Level"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_tja8x")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_ji2m7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqwqu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bkd00")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4ex2i")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_tja8x")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_ji2m7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqwqu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bkd00")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4ex2i")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

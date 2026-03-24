@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://c47g02voinilm"]
+
+[ext_resource type="Script" path="res://scripts/gameobjs/movable_block.gd" id="1_33786"]
+[ext_resource type="Texture2D" uid="uid://dd000k2fa4w40" path="res://assets/sprites/tilemap_city.png" id="1_m4aoc"]
+[ext_resource type="AudioStream" uid="uid://cemm2tcdskig0" path="res://assets/sounds/wood_box_move.mp3" id="3_lajao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38lxh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mypyy"]
+size = Vector2(6, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0k2d"]
+size = Vector2(6, 12)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r05fn"]
+polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
+
+[node name="MovableBlock" type="CharacterBody2D" groups=["MoveableItem"]]
+collision_layer = 4
+collision_mask = 7
+safe_margin = 0.001
+script = ExtResource("1_33786")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m4aoc")
+region_enabled = true
+region_rect = Rect2(80, 60, 20, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_38lxh")
+
+[node name="LeftPushZone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPushZone"]
+position = Vector2(-9, 0)
+shape = SubResource("RectangleShape2D_mypyy")
+
+[node name="RightPushZone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPushZone"]
+position = Vector2(9, 0)
+shape = SubResource("RectangleShape2D_u0k2d")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_r05fn")
+
+[node name="MoveSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lajao")
+pitch_scale = 0.5
+bus = &"SFX"
+
+[connection signal="body_entered" from="LeftPushZone" to="." method="_on_left_push_zone_body_entered"]
+[connection signal="body_exited" from="LeftPushZone" to="." method="_on_left_push_zone_body_exited"]
+[connection signal="body_entered" from="RightPushZone" to="." method="_on_right_push_zone_body_entered"]
+[connection signal="body_exited" from="RightPushZone" to="." method="_on_right_push_zone_body_exited"]

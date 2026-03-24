@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqlck5q21qsww"]
+
+[ext_resource type="Texture2D" uid="uid://d31u2ak7qjg8o" path="res://assets/sprites/gradient_streetlight_t.png" id="2_88avf"]
+[ext_resource type="Texture2D" uid="uid://c0q8yw4ju27jt" path="res://assets/sprites/gradient_streetlight.png" id="2_a30ic"]
+
+[node name="StreetLight" type="PointLight2D"]
+z_index = 2
+color = Color(1, 1, 0.392157, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("2_a30ic")
+metadata/_edit_group_ = true
+
+[node name="GradientOverlay" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.392157, 0.392157)
+texture = ExtResource("2_88avf")
+
+[node name="LampHead" type="Polygon2D" parent="."]

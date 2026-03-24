@@ -1,0 +1,250 @@
+[gd_scene load_steps=16 format=3 uid="uid://thgdqt845aqq"]
+
+[ext_resource type="Texture2D" uid="uid://cqgqnl6swxkts" path="res://assets/ui/ui_background.png" id="1_gnr8i"]
+[ext_resource type="Script" path="res://scripts/menu/ui_options_menu.gd" id="1_yvn4o"]
+[ext_resource type="Shader" path="res://scripts/shaders/ui_background.gdshader" id="2_f5ys7"]
+[ext_resource type="Shader" path="res://scripts/shaders/ui_blur.gdshader" id="2_o2y5x"]
+[ext_resource type="FontFile" uid="uid://bot2r4qwl2gtn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="3_kwiie"]
+[ext_resource type="Texture2D" uid="uid://cwirbw5pyakq6" path="res://assets/ui/buttons/Button_Dark (3).png" id="5_f486c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_guopr"]
+shader = ExtResource("2_f5ys7")
+shader_parameter/octave_count = 10
+shader_parameter/amp_start = 0.5
+shader_parameter/amp_coeff = 0.5
+shader_parameter/freq_coeff = 2.0
+shader_parameter/shift_coeff = 0.2
+shader_parameter/speed = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lh0lm"]
+shader = ExtResource("2_o2y5x")
+shader_parameter/amount = 1.75
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2dr51"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dyixw"]
+font = ExtResource("3_kwiie")
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_reurc"]
+font = ExtResource("3_kwiie")
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8fuol"]
+texture = ExtResource("5_f486c")
+expand_margin_left = 2.0
+expand_margin_top = 3.0
+expand_margin_right = 2.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.803922)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t6y8c"]
+texture = ExtResource("5_f486c")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.803922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e02gl"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6i5r"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -135.0
+offset_right = -240.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvn4o")
+
+[node name="BackgroundGlitch" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_guopr")
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("1_gnr8i")
+
+[node name="BackgroundBlur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_lh0lm")
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = SubResource("CanvasTexture_2dr51")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 80.0
+offset_top = 45.0
+offset_right = 400.0
+offset_bottom = 220.0
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 139.0
+offset_top = 15.0
+offset_right = 346.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_kwiie")
+theme_override_font_sizes/font_size = 22
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 139.0
+offset_top = 45.0
+offset_right = 346.0
+offset_bottom = 132.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+theme_override_fonts/font = ExtResource("3_kwiie")
+text = "Move: A/D
+Jump: Space
+Fullscreen: f11
+Restart: R"
+label_settings = SubResource("LabelSettings_dyixw")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 139.0
+offset_top = 137.0
+offset_right = 346.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_kwiie")
+theme_override_font_sizes/font_size = 22
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 139.0
+offset_top = 165.0
+offset_right = 299.0
+offset_bottom = 221.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="Game" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Game"
+label_settings = SubResource("LabelSettings_reurc")
+
+[node name="GameSlider" type="HSlider" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Music" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_reurc")
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SFX" type="Label" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_reurc")
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 216.0
+offset_top = 232.0
+offset_right = 273.0
+offset_bottom = 247.0
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_kwiie")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_8fuol")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t6y8c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e02gl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_c6i5r")
+text = "Return"
+
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/GameSlider" to="." method="_on_game_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

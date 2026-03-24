@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://gd0vy7cqyuou"]
+
+[ext_resource type="Script" path="res://scripts/menu/congrats_screen.gd" id="1_6i14k"]
+[ext_resource type="Texture2D" uid="uid://cqgqnl6swxkts" path="res://assets/ui/ui_background.png" id="2_v03tc"]
+[ext_resource type="FontFile" uid="uid://bot2r4qwl2gtn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="3_83can"]
+[ext_resource type="Texture2D" uid="uid://cwirbw5pyakq6" path="res://assets/ui/buttons/Button_Dark (3).png" id="4_5xbxc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_he2ck"]
+font = ExtResource("3_83can")
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_atmns"]
+texture = ExtResource("4_5xbxc")
+expand_margin_left = 2.0
+expand_margin_top = 3.0
+expand_margin_right = 2.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.803922)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kghui"]
+texture = ExtResource("4_5xbxc")
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.803922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n728l"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fqqst"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[node name="CongratsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6i14k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_v03tc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -64.0
+offset_right = 200.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.745098)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -52.5
+offset_right = 184.0
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+theme_override_fonts/font = ExtResource("3_83can")
+text = "Congratulations! You have beaten all the levels for now..
+But there will always be something more challenging to aim for.
+
+Thanks for playing.."
+label_settings = SubResource("LabelSettings_he2ck")
+autowrap_mode = 3
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 232.0
+offset_right = 273.0
+offset_bottom = 247.0
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_83can")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_atmns")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kghui")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n728l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fqqst")
+text = "Return"
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

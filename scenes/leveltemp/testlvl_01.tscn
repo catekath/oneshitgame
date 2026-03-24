@@ -1,0 +1,230 @@
+[gd_scene load_steps=19 format=3 uid="uid://bjiwnjmbtx52v"]
+
+[ext_resource type="PackedScene" uid="uid://dskkedg0egljf" path="res://scenes/player.tscn" id="1_7g2nq"]
+[ext_resource type="Script" path="res://scripts/rain_particles.gd" id="2_8nb71"]
+[ext_resource type="Texture2D" uid="uid://cbjhhkl0onqbv" path="res://assets/sprites/gradient_atmospheric_light.png" id="3_rgt4h"]
+[ext_resource type="PackedScene" uid="uid://dvkdvx0lb5hp0" path="res://scenes/tilemap.tscn" id="4_ps5kr"]
+[ext_resource type="PackedScene" uid="uid://hlxf2vgaai2k" path="res://scenes/hud.tscn" id="5_kquc3"]
+[ext_resource type="PackedScene" uid="uid://dqqg1jo5sr6hm" path="res://scenes/parallax_bg.tscn" id="6_5v4be"]
+[ext_resource type="PackedScene" uid="uid://d2dbsdvtv8bol" path="res://scenes/gameobjs/send_to_level.tscn" id="7_2423d"]
+[ext_resource type="AudioStream" uid="uid://dywiyqtvrrp2c" path="res://assets/sounds/laser2.mp3" id="8_dr2ay"]
+[ext_resource type="PackedScene" uid="uid://qququp3171jh" path="res://scenes/gameobjs/spikes/spikes.tscn" id="9_33fhh"]
+[ext_resource type="PackedScene" uid="uid://g0roxjonljx1" path="res://scenes/gameobjs/coin.tscn" id="10_0cmy0"]
+[ext_resource type="PackedScene" uid="uid://h35reuvp36id" path="res://scenes/gameobjs/trampoline.tscn" id="11_87xr1"]
+
+[sub_resource type="Curve" id="Curve_5dikw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_pd5rj"]
+min_value = 1.0
+max_value = 5.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_tpwrc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_q4nav"]
+curve_x = SubResource("Curve_5dikw")
+curve_y = SubResource("Curve_pd5rj")
+curve_z = SubResource("Curve_tpwrc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3c7j0"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -150, 0)
+emission_shape_scale = Vector3(350, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 0)
+gravity = Vector3(0, 980, 0)
+scale_min = 0.2
+scale_max = 2.0
+scale_curve = SubResource("CurveXYZTexture_q4nav")
+color = Color(0.54, 0.603, 0.75, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_klxhx"]
+light_mode = 2
+
+[sub_resource type="Environment" id="Environment_qi2s1"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+glow_bloom = 0.1
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 2.0
+
+[node name="Testlvl" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_7g2nq")]
+position = Vector2(143, 270)
+metadata/_edit_lock_ = true
+
+[node name="DefaultCamera2D" type="Camera2D" parent="Player"]
+process_callback = 0
+limit_bottom = 378
+position_smoothing_enabled = true
+position_smoothing_speed = 16.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_horizontal_offset = 1.0
+drag_vertical_offset = -1.0
+drag_left_margin = 0.25
+drag_bottom_margin = 0.25
+editor_draw_limits = true
+
+[node name="DeathParticles" type="CPUParticles2D" parent="Player"]
+position = Vector2(1, -9)
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 2.0
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(4, 1)
+direction = Vector2(0, -2)
+spread = 180.0
+gravity = Vector2(0, 10)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_amount_max = 2.0
+color = Color(1, 0.0392157, 0.117647, 1)
+
+[node name="RainParticles" type="GPUParticles2D" parent="Player"]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_3c7j0")
+fixed_fps = 0
+draw_order = 0
+script = ExtResource("2_8nb71")
+
+[node name="Torch" type="PointLight2D" parent="Player"]
+z_index = -1
+position = Vector2(2, -10)
+energy = 0.25
+range_item_cull_mask = 4
+shadow_enabled = true
+texture = ExtResource("3_rgt4h")
+texture_scale = 0.5
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Torch"]
+modulate = Color(1, 1, 1, 0.0980392)
+show_behind_parent = true
+light_mask = 4
+material = SubResource("CanvasItemMaterial_klxhx")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_rgt4h")
+
+[node name="TileMap" parent="." instance=ExtResource("4_ps5kr")]
+modulate = Color(1, 0.501961, 0.501961, 1)
+layer_0/tile_data = PackedInt32Array(1179651, 65540, 0, 1179652, 65540, 0, 1179653, 65540, 0, 1179654, 65540, 0, 1179655, 65540, 1, 1179656, 65540, 1, 1179657, 65540, 1, 1179658, 65540, 1, 1179659, 65540, 1, 1179660, 65540, 1, 1179661, 65540, 0, 1179662, 65540, 0, 1179663, 65540, 0, 1179664, 65540, 0, 1179665, 65540, 0, 1179666, 65540, 0, 1179667, 65540, 0, 1179668, 65540, 0, 1179669, 65540, 0, 1179670, 65540, 1, 1179671, 65540, 1, 1179650, 65540, 0, 1179649, 65540, 0, 1179648, 65540, 0, 1179672, 65540, 1, 1179673, 65540, 1, 1114136, 65540, 1, 1114137, 65540, 1, 1048600, 65540, 1, 1048601, 65540, 1, 983064, 65540, 0, 983065, 65540, 0, 917530, 65540, 0, 983066, 65540, 1, 1048602, 65540, 1, 1114138, 65540, 1, 1179674, 65540, 1, 1048603, 65540, 1, 1048604, 65540, 1, 1048605, 65540, 1, 1048606, 65540, 1, 1114139, 65540, 1, 1179675, 65540, 1, 1114140, 65540, 1, 1179676, 65540, 1, 1114141, 65540, 1, 1179677, 65540, 1, 1179678, 65540, 1, 1114142, 65540, 1, 983069, 65540, 0, 983070, 65540, 0, 983071, 65540, 0, 983072, 65540, 0, 983073, 65540, 0, 983074, 65540, 0, 983075, 65540, 0, 1048607, 65540, 1, 1048608, 65540, 1, 1114143, 65540, 1, 1114144, 65540, 1, 1179679, 65540, 1, 1179680, 65540, 1, 1048609, 65540, 1, 1114145, 65540, 1, 1179681, 65540, 1, 1179682, 65540, 1, 1114146, 65540, 1, 1048610, 65540, 1, 1048611, 65540, 1, 1114147, 65540, 1, 1179683, 65540, 1, 1114119, 65540, 0, 1114120, 65540, 0, 1114121, 65540, 0, 1114122, 65540, 0, 1114123, 65540, 0, 1114124, 65540, 0, 1179684, 65540, 0, 1179685, 65540, 0, 1179686, 65540, 1, 1179687, 65540, 1, 1179688, 65540, 1, 1179689, 65540, 1, 1179690, 65540, 1, 1179691, 65540, 1, 1114134, 65540, 0, 1114135, 65540, 0, 1114150, 65540, 0, 1114151, 65540, 0, 1114152, 65540, 0, 1114153, 65540, 1, 1114154, 65540, 1, 1048617, 65540, 0, 1048618, 65540, 0, 1114155, 65540, 1, 1048619, 65540, 0)
+layer_1/tile_data = PackedInt32Array(1048588, 458756, 5)
+metadata/_edit_lock_ = true
+
+[node name="HUD" parent="." instance=ExtResource("5_kquc3")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("6_5v4be")]
+scroll_offset = Vector2(125.274, 465)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qi2s1")
+
+[node name="WorldAmbientBackground" type="DirectionalLight2D" parent="."]
+visible = false
+rotation = 0.902335
+energy = 0.3
+blend_mode = 1
+range_layer_min = -100
+range_layer_max = -100
+shadow_filter = 1
+metadata/_edit_lock_ = true
+
+[node name="WorldAmbientForeground" type="DirectionalLight2D" parent="."]
+visible = false
+rotation = 0.902335
+energy = 0.3
+blend_mode = 1
+range_layer_min = -99
+shadow_filter = 1
+metadata/_edit_lock_ = true
+
+[node name="Lights" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="AtmosphericLight2D" type="PointLight2D" parent="Lights"]
+z_index = 3
+position = Vector2(289, 285)
+scale = Vector2(2, 2)
+color = Color(1, 0.196078, 0.196078, 1)
+texture = ExtResource("3_rgt4h")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight2D"]
+modulate = Color(1, 0.196078, 0.196078, 0.0980392)
+texture = ExtResource("3_rgt4h")
+
+[node name="AtmosphericLight2D2" type="PointLight2D" parent="Lights"]
+z_index = 3
+position = Vector2(628, 278)
+scale = Vector2(2, 2)
+color = Color(1, 0.196078, 0.196078, 1)
+range_layer_min = -3
+range_layer_max = 3
+texture = ExtResource("3_rgt4h")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight2D2"]
+modulate = Color(1, 0.196078, 0.196078, 0.0980392)
+texture = ExtResource("3_rgt4h")
+
+[node name="AtmosphericLight2D3" type="PointLight2D" parent="Lights"]
+z_index = 3
+position = Vector2(-16, 150)
+scale = Vector2(4, 4)
+color = Color(1, 0.196078, 0.196078, 1)
+range_layer_min = -3
+range_layer_max = 3
+texture = ExtResource("3_rgt4h")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight2D3"]
+modulate = Color(1, 0.196078, 0.196078, 0.0980392)
+texture = ExtResource("3_rgt4h")
+
+[node name="AtmosphericLight2D4" type="PointLight2D" parent="Lights"]
+z_index = 3
+position = Vector2(475, 23)
+scale = Vector2(4, 4)
+color = Color(1, 0.196078, 0.196078, 1)
+range_layer_min = -3
+range_layer_max = 3
+texture = ExtResource("3_rgt4h")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight2D4"]
+modulate = Color(1, 0.196078, 0.196078, 0.0980392)
+texture = ExtResource("3_rgt4h")
+
+[node name="SendToLevel" parent="." instance=ExtResource("7_2423d")]
+position = Vector2(250, 330)
+target_level_path = "res://scenes/levels/level_02.tscn"
+custom_completion_sound = ExtResource("8_dr2ay")
+
+[node name="Spikes" parent="." instance=ExtResource("9_33fhh")]
+position = Vector2(411, 354)
+
+[node name="Coin" parent="." instance=ExtResource("10_0cmy0")]
+position = Vector2(346, 351)
+
+[node name="Coin2" parent="." instance=ExtResource("10_0cmy0")]
+position = Vector2(331, 350)
+
+[node name="Coin3" parent="." instance=ExtResource("10_0cmy0")]
+position = Vector2(505, 289)
+
+[node name="Coin4" parent="." instance=ExtResource("10_0cmy0")]
+position = Vector2(153, 330)
+
+[node name="Trampoline" parent="." instance=ExtResource("11_87xr1")]
+position = Vector2(572, 290)

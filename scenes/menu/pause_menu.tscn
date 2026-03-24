@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=3 uid="uid://pqkox1e5k3e"]
+
+[ext_resource type="Shader" path="res://scripts/shaders/ui_blur.gdshader" id="1_0u62k"]
+[ext_resource type="Script" path="res://scripts/menu/pause_menu.gd" id="1_encpa"]
+[ext_resource type="FontFile" uid="uid://bot2r4qwl2gtn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_h4srv"]
+[ext_resource type="Texture2D" uid="uid://cwirbw5pyakq6" path="res://assets/ui/buttons/Button_Dark (3).png" id="3_jxnvq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5eah"]
+shader = ExtResource("1_0u62k")
+shader_parameter/amount = 1.75
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_y5yuo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nn0c"]
+texture = ExtResource("3_jxnvq")
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 0.803922)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_enuem"]
+texture = ExtResource("3_jxnvq")
+expand_margin_left = 1.0
+expand_margin_top = 4.0
+expand_margin_right = 1.0
+expand_margin_bottom = 4.0
+modulate_color = Color(1, 1, 1, 0.803922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8dvu"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apr8j"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 3.0
+expand_margin_right = 1.0
+expand_margin_bottom = 3.0
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -135.0
+offset_right = -240.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_encpa")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_y5eah")
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 270.0
+texture = SubResource("CanvasTexture_y5yuo")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 160.0
+offset_top = 20.0
+offset_right = 316.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h4srv")
+theme_override_font_sizes/font_size = 28
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 183.0
+offset_top = 100.0
+offset_right = 296.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_h4srv")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nn0c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_enuem")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m8dvu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_apr8j")
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_h4srv")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nn0c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_enuem")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m8dvu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_apr8j")
+text = "Options"
+
+[node name="QuitToMainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_h4srv")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nn0c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_enuem")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m8dvu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_apr8j")
+text = "Menu"
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitToMainMenuButton" to="." method="_on_quit_to_main_menu_button_pressed"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://6nx01p01ed81"]
+
+[ext_resource type="Texture2D" uid="uid://dd000k2fa4w40" path="res://assets/sprites/tilemap_city.png" id="1_m4aoc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lvb2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5m2h"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_lvb2p")
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m4aoc")
+region_enabled = true
+region_rect = Rect2(80, 60, 20, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t5m2h")

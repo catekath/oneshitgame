@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://2cvkpuxw4x1i"]
+
+[ext_resource type="FontFile" uid="uid://bot2r4qwl2gtn" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="1_uucfy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otsiy"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_m6awr"]
+font = ExtResource("1_uucfy")
+font_size = 14
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TextLabel" type="Label"]
+z_index = 5
+offset_right = 33.0
+offset_bottom = 13.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_otsiy")
+text = "Text"
+label_settings = SubResource("LabelSettings_m6awr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.470588)

@@ -1,0 +1,1364 @@
+[gd_scene load_steps=15 format=3 uid="uid://cju57ftsapflp"]
+
+[ext_resource type="PackedScene" uid="uid://3nu6e6jshlqs" path="res://scenes/level.tscn" id="1_piimi"]
+[ext_resource type="PackedScene" uid="uid://dhjbtfu4fx651" path="res://scenes/gameobjs/world_barrier_death.tscn" id="2_6m0np"]
+[ext_resource type="PackedScene" uid="uid://dqlck5q21qsww" path="res://scenes/gameobjs/streetlight.tscn" id="3_3wh3e"]
+[ext_resource type="Texture2D" uid="uid://brg553uxoordm" path="res://assets/sprites/gradient_neutral_point_light.png" id="3_tdrxo"]
+[ext_resource type="PackedScene" uid="uid://qququp3171jh" path="res://scenes/gameobjs/spikes/spikes.tscn" id="4_02srj"]
+[ext_resource type="Texture2D" uid="uid://d22nw5llt8852" path="res://assets/sprites/gradient_atmospheric.png" id="4_lmhjv"]
+[ext_resource type="PackedScene" uid="uid://cf4gjql1plwue" path="res://scenes/gameobjs/spikes/falling_spike.tscn" id="5_ptu0c"]
+[ext_resource type="PackedScene" uid="uid://j7lxaoaejouc" path="res://scenes/gameobjs/moving_platform.tscn" id="7_xdcf8"]
+[ext_resource type="PackedScene" uid="uid://g0roxjonljx1" path="res://scenes/gameobjs/coin.tscn" id="8_k6ctv"]
+[ext_resource type="PackedScene" uid="uid://2cvkpuxw4x1i" path="res://scenes/gameobjs/text_label.tscn" id="9_1k0lp"]
+[ext_resource type="PackedScene" uid="uid://d2dbsdvtv8bol" path="res://scenes/gameobjs/send_to_level.tscn" id="11_u1b4v"]
+[ext_resource type="PackedScene" uid="uid://38yn486v7ekr" path="res://scenes/gameobjs/checkpoint.tscn" id="12_00nur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvnw7"]
+size = Vector2(16, 253)
+
+[sub_resource type="Curve2D" id="Curve2D_xrx6e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 250, 0)
+}
+point_count = 2
+
+[node name="Level_04" instance=ExtResource("1_piimi")]
+
+[node name="DefaultCamera2D" parent="Player" index="12"]
+limit_right = 6440
+
+[node name="RainParticles" parent="Player" index="14"]
+amount = 100
+
+[node name="TileMap" parent="." index="1"]
+layer_0/modulate = Color(0.784314, 1, 0.784314, 1)
+layer_0/tile_data = PackedInt32Array(1114120, 786433, 0, 1048738, 524289, 12, 1048748, 327684, 5, 1114413, 786433, 0, 1114420, 458756, 5, 1114113, 327684, 3)
+layer_1/modulate = Color(0.784314, 1, 0.784314, 1)
+layer_1/tile_data = PackedInt32Array(1245183, 65540, 1, 1179647, 65540, 1, 1114111, 65540, 1, 1048575, 65540, 1, 983039, 65540, 1, 917503, 65540, 1, 851967, 65540, 1, 786431, 65540, 1, 720895, 65540, 1, 655359, 65540, 1, 589823, 65540, 1, 524287, 65540, 1, 458751, 65540, 1, 393215, 65540, 1, 327679, 65540, 786432, 1179673, 65540, 786432, 1179672, 65540, 0, 1179671, 65540, 0, 1179670, 65540, 0, 1179669, 65540, 0, 1179668, 65540, 0, 1179667, 65540, 0, 1179666, 65540, 0, 1179665, 65540, 0, 1179664, 65540, 0, 1179663, 65540, 0, 1179662, 65540, 0, 1179661, 65540, 0, 1179660, 65540, 0, 1179659, 65540, 0, 1179658, 65540, 0, 1179657, 65540, 0, 1179656, 65540, 0, 1179655, 65540, 0, 1179654, 65540, 0, 1179653, 65540, 0, 1179652, 65540, 0, 1179651, 65540, 0, 1179650, 65540, 0, 1179649, 65540, 0, 1179648, 65540, 0, 1179682, 65540, 0, 1179681, 65540, 0, 1179680, 65540, 0, 1179679, 65540, 0, 1179678, 65540, 0, 1179677, 65540, 0, 1179676, 65540, 0, 1179675, 65540, 0, 1179674, 65540, 0, 1179690, 65540, 786432, 1179689, 65540, 1, 1179688, 65540, 1, 1179687, 65540, 786432, 1179686, 65540, 0, 1179685, 65540, 0, 1179684, 65540, 0, 1179683, 65540, 0, 852018, 262148, 1, 917561, 131076, 0, 917560, 4, 0, 262203, 262148, 1, 786492, 262148, 1, 852034, 65540, 1, 786498, 65540, 786432, 852033, 65540, 1, 786497, 65540, 786432, 852032, 65540, 1, 786496, 65540, 786432, 1179693, 65540, 1, 1179692, 65540, 1, 1179691, 65540, 786432, 1179695, 65540, 1, 1179694, 65540, 1, 524314, 262148, 1, 524319, 262148, 1, 524324, 262148, 1, 1114152, 65540, 786432, 983085, 65540, 786432, 983084, 65540, 786432, 983087, 65540, 786432, 983086, 65540, 786432, 1114159, 65540, 1, 1048623, 65540, 1, 1114158, 65540, 1, 1048622, 65540, 1, 1114157, 65540, 1, 1048621, 65540, 1, 1114156, 65540, 1, 1048620, 65540, 1, 1179714, 65540, 1, 1114178, 65540, 1, 1048642, 65540, 1, 983106, 65540, 1, 917570, 65540, 1, 1179713, 65540, 1, 1114177, 65540, 1, 1048641, 65540, 1, 983105, 65540, 1, 917569, 65540, 1, 1179712, 65540, 1, 1114176, 65540, 1, 1048640, 65540, 1, 983104, 65540, 1, 917568, 65540, 1, 983111, 65540, 1, 917575, 65540, 1, 852039, 65540, 1, 786503, 65540, 786432, 1179719, 65540, 1, 1114183, 65540, 1, 1048647, 65540, 1, 852044, 65540, 786432, 917580, 65540, 1, 983116, 65540, 1, 1048652, 65540, 1, 1114188, 65540, 1, 1179724, 65540, 1, 917586, 65540, 786432, 983122, 65540, 1, 1048658, 65540, 1, 1114194, 65540, 1, 1179730, 65540, 1, 852056, 65540, 786432, 917592, 65540, 1, 983128, 65540, 1, 1048664, 65540, 1, 1114200, 65540, 1, 1179736, 65540, 1, 786526, 65540, 786432, 852062, 65540, 1, 917598, 65540, 1, 983134, 65540, 1, 1048670, 65540, 1, 1114206, 65540, 1, 1179742, 65540, 1, 589921, 65540, 1, 524385, 65540, 1, 458849, 65540, 1, 393313, 65540, 1, 327777, 65540, 1, 589922, 65540, 1, 524386, 65540, 1, 458850, 65540, 1, 393314, 65540, 1, 327778, 65540, 1, 589923, 65540, 1, 524387, 65540, 1, 458851, 65540, 1, 393315, 65540, 1, 327779, 65540, 1, 262242, 65540, 786432, 262241, 65540, 786432, 262243, 65540, 786432, 1179746, 65540, 1, 1114210, 65540, 1, 1048674, 65540, 1, 983138, 65540, 1, 917602, 65540, 786432, 1179748, 65540, 1, 1114212, 65540, 1, 1048676, 65540, 1, 983140, 65540, 1, 917604, 65540, 786432, 1179747, 65540, 1, 1114211, 65540, 1, 1048675, 65540, 1, 983139, 65540, 1, 917603, 65540, 786432, 917610, 262148, 1, 917616, 262148, 1, 917622, 262148, 1, 917629, 262148, 1, 1114246, 65540, 1, 1048710, 65540, 1, 983174, 65540, 1, 917638, 65540, 786432, 1114245, 65540, 1, 1048709, 65540, 1, 983173, 65540, 1, 917637, 65540, 786432, 1114244, 65540, 1, 1048708, 65540, 1, 983172, 65540, 1, 917636, 65540, 786432, 1179782, 65540, 1, 1179781, 65540, 1, 1179780, 65540, 1, 1179806, 65540, 1, 1179811, 65540, 1, 1179810, 65540, 1, 1179809, 65540, 1, 1179808, 65540, 1, 1179807, 65540, 1, 1179805, 65540, 1, 1179816, 65540, 1, 1179815, 65540, 1, 1179814, 65540, 1, 1179813, 65540, 1, 1179812, 65540, 1, 1179829, 65540, 1, 1179828, 65540, 1, 1179827, 65540, 1, 1179826, 65540, 1, 1179825, 65540, 1, 1179824, 65540, 1, 1179823, 65540, 1, 1179822, 65540, 1, 1179821, 65540, 1, 1179820, 65540, 1, 1179819, 65540, 1, 1179818, 65540, 1, 1179817, 65540, 1, 1114293, 65540, 786432, 1114292, 65540, 786432, 1114291, 65540, 786432, 1114290, 65540, 786432, 1114289, 65540, 786432, 1114288, 65540, 786432, 1114287, 65540, 786432, 1114286, 65540, 786432, 1114285, 65540, 786432, 1114284, 65540, 786432, 1114283, 65540, 786432, 1114282, 65540, 786432, 1114281, 65540, 786432, 1114280, 65540, 786432, 1114279, 65540, 786432, 1114278, 65540, 786432, 1114277, 65540, 786432, 1114276, 65540, 786432, 1114275, 65540, 786432, 1114274, 65540, 786432, 1114273, 65540, 786432, 1114272, 65540, 786432, 1114271, 65540, 786432, 1114270, 65540, 786432, 1114269, 65540, 786432, 1179859, 65540, 1, 1114323, 65540, 1, 1048787, 65540, 1, 983251, 65540, 1, 917715, 65540, 1, 852179, 65540, 786432, 1179862, 65540, 1, 1114326, 65540, 1, 1048790, 65540, 1, 983254, 65540, 1, 917718, 65540, 1, 852182, 65540, 786432, 655572, 65540, 1, 590036, 65540, 1, 524500, 65540, 1, 458964, 65540, 1, 393428, 65540, 1, 655575, 65540, 1, 590039, 65540, 1, 524503, 65540, 1, 458967, 65540, 1, 393431, 65540, 1, 1114329, 65540, 1, 1048793, 65540, 1, 983257, 65540, 1, 917721, 65540, 1, 852185, 65540, 786432, 1179865, 65540, 1, 327892, 65540, 1, 262356, 65540, 1, 327895, 65540, 1, 262359, 65540, 1, 983227, 65540, 786432, 1048763, 65540, 1, 1114299, 65540, 1, 1179835, 65540, 1, 786657, 65540, 1, 721121, 65540, 786432, 786656, 65540, 1, 721120, 65540, 786432, 786655, 65540, 1, 721119, 65540, 786432, 786654, 65540, 1, 721118, 65540, 786432, 1179873, 65540, 1, 1114337, 65540, 1, 1048801, 65540, 1, 983265, 65540, 1, 917729, 65540, 1, 852193, 65540, 1, 1179872, 65540, 1, 1114336, 65540, 1, 1048800, 65540, 1, 983264, 65540, 1, 917728, 65540, 1, 852192, 65540, 1, 1179871, 65540, 1, 1114335, 65540, 1, 1048799, 65540, 1, 983263, 65540, 1, 917727, 65540, 1, 852191, 65540, 1, 1179870, 65540, 1, 1114334, 65540, 1, 1048798, 65540, 1, 983262, 65540, 1, 917726, 65540, 1, 852190, 65540, 1, 1179881, 65540, 1, 1114345, 65540, 1, 1048809, 65540, 1, 983273, 65540, 1, 917737, 65540, 1, 852201, 65540, 1, 786665, 65540, 786432, 1179880, 65540, 1, 1114344, 65540, 1, 1048808, 65540, 1, 983272, 65540, 1, 917736, 65540, 1, 852200, 65540, 1, 786664, 65540, 786432, 1179879, 65540, 1, 1114343, 65540, 1, 1048807, 65540, 1, 983271, 65540, 1, 917735, 65540, 1, 852199, 65540, 1, 786663, 65540, 786432, 1179878, 65540, 1, 1114342, 65540, 1, 1048806, 65540, 1, 983270, 65540, 1, 917734, 65540, 1, 852198, 65540, 1, 786662, 65540, 786432, 1179897, 65540, 1, 1114361, 65540, 1, 1048825, 65540, 1, 1179948, 65540, 0, 1179947, 65540, 0, 1179946, 65540, 0, 1179945, 65540, 0, 1179944, 65540, 0, 1179943, 65540, 0, 1179942, 65540, 0, 1179941, 65540, 0, 1179940, 65540, 0, 1179939, 65540, 0, 1179938, 65540, 0, 1179937, 65540, 0, 1179936, 65540, 0, 1179935, 65540, 0, 1179934, 65540, 0, 1179933, 65540, 0, 1179932, 65540, 0, 1179931, 65540, 0, 1179930, 65540, 0, 1179929, 4, 0, 983289, 65540, 1, 1114362, 65540, 1, 1048826, 65540, 1, 983290, 65540, 1, 1179898, 65540, 1, 1179890, 65540, 1, 1114354, 65540, 1, 1048818, 65540, 1, 983282, 65540, 1, 917746, 65540, 1, 852210, 65540, 1, 1179918, 65540, 1, 1114382, 65540, 1, 1048846, 65540, 1, 983310, 65540, 786432, 1179950, 65540, 786432, 1179949, 65540, 786432, 1179841, 65540, 1, 1114305, 65540, 1, 1048769, 65540, 1, 983233, 65540, 1, 917697, 65540, 1, 852161, 65540, 786432, 1179854, 65540, 1, 1114318, 65540, 1, 1048782, 65540, 1, 983246, 65540, 1, 917710, 65540, 1, 852174, 65540, 1, 786638, 65540, 786432, 1179848, 65540, 1, 1114312, 65540, 1, 1048776, 65540, 1, 983240, 65540, 1, 917704, 65540, 1, 852168, 65540, 786432, 786619, 65540, 1, 721083, 65540, 1, 655547, 65540, 1, 590011, 65540, 1, 524475, 65540, 1, 458939, 65540, 1, 393403, 65540, 1, 327867, 65540, 1, 262331, 65540, 1, 196820, 65540, 786432, 196823, 65540, 786432, 196795, 65540, 786432, 655553, 65540, 1, 590017, 65540, 1, 524481, 65540, 1, 458945, 65540, 1, 393409, 65540, 1, 327873, 65540, 1, 262337, 65540, 1, 196801, 65540, 786432, 655560, 65540, 1, 590024, 65540, 1, 524488, 65540, 1, 458952, 65540, 1, 393416, 65540, 1, 327880, 65540, 1, 262344, 65540, 1, 196808, 65540, 786432, 590030, 65540, 1, 524494, 65540, 1, 458958, 65540, 1, 393422, 65540, 1, 327886, 65540, 1, 262350, 65540, 1, 196814, 65540, 786432, 327905, 65540, 1, 262369, 65540, 1, 196833, 65540, 786432, 327904, 65540, 1, 262368, 65540, 1, 196832, 65540, 786432, 327903, 65540, 1, 262367, 65540, 1, 196831, 65540, 786432, 327902, 65540, 1, 262366, 65540, 1, 196830, 65540, 786432, 590052, 262148, 1, 458984, 262148, 1, 262372, 262148, 1, 786674, 65540, 786432, 852209, 65540, 1, 786673, 65540, 786432, 1179889, 65540, 1, 1114353, 65540, 1, 1048817, 65540, 1, 983281, 65540, 1, 917745, 65540, 1, 917754, 65540, 1, 852218, 65540, 1, 786682, 65540, 786432, 917753, 65540, 1, 852217, 65540, 1, 786681, 65540, 786432, 1179908, 65540, 1, 1114372, 65540, 1, 1048836, 65540, 1, 983300, 65540, 1, 917764, 65540, 1, 852228, 65540, 1, 786692, 65540, 786432, 1179907, 65540, 1, 1114371, 65540, 1, 1048835, 65540, 1, 983299, 65540, 1, 917763, 65540, 1, 852227, 65540, 1, 786691, 65540, 786432, 1179917, 65540, 1, 1114381, 65540, 1, 1048845, 65540, 1, 983309, 65540, 786432, 1179955, 65540, 786432, 1179954, 65540, 0, 1179953, 65540, 786432, 1179952, 65540, 786432, 1179951, 65540, 786432, 1179970, 65540, 1, 1179969, 65540, 1, 1179968, 65540, 0, 1179967, 65540, 0, 1179966, 65540, 0, 1179965, 65540, 0, 1179964, 65540, 0, 1179963, 65540, 0, 1179962, 65540, 0, 1179961, 65540, 0, 1179960, 65540, 0, 1179959, 65540, 0, 1179958, 65540, 0, 1179957, 65540, 0, 1179956, 65540, 0, 1114434, 65540, 1, 1048898, 65540, 1, 983362, 65540, 1, 917826, 65540, 1, 852290, 65540, 1, 786754, 65540, 1, 721218, 65540, 1, 655682, 65540, 1, 590146, 65540, 1, 524610, 65540, 1, 459074, 65540, 1, 393538, 65540, 1, 328002, 65540, 1, 262466, 65540, 1, 196930, 65540, 1, 131394, 65540, 1, 65858, 65540, 1, 322, 65540, 1, -65214, 65540, 1, -130750, 65540, 1, -196286, 65540, 1, -261822, 65540, 1, -327358, 65540, 1, -392894, 65540, 1, -458430, 65540, 1, -523966, 65540, 1, -589502, 65540, 1, -655038, 65540, 786432, 1114433, 65540, 1, 1048897, 65540, 1, 983361, 65540, 1, 917825, 65540, 1, 852289, 65540, 1, 786753, 65540, 1, 721217, 65540, 1, 655681, 65540, 1, 590145, 65540, 1, 524609, 65540, 1, 459073, 65540, 1, 393537, 65540, 1, 328001, 65540, 1, 262465, 65540, 1, 196929, 65540, 1, 131393, 65540, 1, 65857, 65540, 1, 321, 65540, 1, -65215, 65540, 1, -130751, 65540, 1, -196287, 65540, 1, -261823, 65540, 1, -327359, 65540, 1, -392895, 65540, 1, -458431, 65540, 1, -523967, 65540, 1, -589503, 65540, 1, -655039, 65540, 786432, 327916, 262148, 1, 393459, 262148, 1, -458565, 262148, 1, -458559, 262148, 1, -458552, 262148, 1, -458546, 262148, 1, -458540, 262148, 1, -458537, 262148, 1, -458530, 4, 0, -458529, 65540, 0, -458528, 65540, 0, -458527, 131076, 0, 262278, 65540, 786432, 262277, 65540, 786432, 262276, 65540, 786432, 458886, 65540, 1, 393350, 65540, 1, 327814, 65540, 1, 458885, 65540, 1, 393349, 65540, 1, 327813, 65540, 1, 458884, 65540, 1, 393348, 65540, 1, 327812, 65540, 1, 1114153, 65540, 786432, 524422, 65540, 1, 524421, 65540, 1, 524420, 65540, 1, 589958, 65540, 1, 589957, 65540, 1, 589956, 65540, 1, 393441, 65540, 1, 393440, 65540, 1, 393439, 65540, 1, 393438, 65540, 1, 1179919, 65540, 1, 1114383, 65540, 1, 1048847, 65540, 1, 983311, 65540, 786432)
+
+[node name="ParallaxBackground" parent="." index="3"]
+scroll_offset = Vector2(-5544.04, 465)
+
+[node name="WorldAmbientBackground" parent="." index="5"]
+color = Color(1, 0, 1, 1)
+energy = 0.5
+
+[node name="WorldAmbientForeground" parent="." index="6"]
+color = Color(1, 0, 1, 1)
+energy = 0.5
+
+[node name="WorldDeathBarrier" parent="." index="7" instance=ExtResource("2_6m0np")]
+position = Vector2(0, 500)
+
+[node name="AtmosphericLight" parent="Lights" index="0"]
+color = Color(0.784314, 1, 0.784314, 1)
+energy = 0.1
+
+[node name="Sprite2D" parent="Lights/AtmosphericLight" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.0392157)
+
+[node name="AtmosphericLight2" type="PointLight2D" parent="Lights" index="1"]
+z_index = 3
+position = Vector2(9, 350)
+scale = Vector2(1.75, 1.75)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight2" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+position = Vector2(8, -13.1429)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight3" type="PointLight2D" parent="Lights" index="2"]
+z_index = 3
+position = Vector2(301, 418)
+scale = Vector2(1.75, 1.75)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight3" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight4" type="PointLight2D" parent="Lights" index="3"]
+z_index = 3
+position = Vector2(580, 331)
+scale = Vector2(1.75, 1.75)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight4" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight14" type="PointLight2D" parent="Lights" index="4"]
+z_index = 3
+position = Vector2(1004, 231)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight14" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight6" type="PointLight2D" parent="Lights" index="5"]
+z_index = 3
+position = Vector2(1166, 277)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight6" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight15" type="PointLight2D" parent="Lights" index="6"]
+z_index = 3
+position = Vector2(1290, 196)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight15" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight7" type="PointLight2D" parent="Lights" index="7"]
+z_index = 3
+position = Vector2(1426, 220)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight7" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight8" type="PointLight2D" parent="Lights" index="8"]
+z_index = 3
+position = Vector2(1544, 231)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight8" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight9" type="PointLight2D" parent="Lights" index="9"]
+z_index = 3
+position = Vector2(1658, 258)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight9" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight11" type="PointLight2D" parent="Lights" index="10"]
+z_index = 3
+position = Vector2(1789, 223)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight11" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight19" type="PointLight2D" parent="Lights" index="11"]
+z_index = 3
+position = Vector2(1959, 211)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight19" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight20" type="PointLight2D" parent="Lights" index="12"]
+z_index = 3
+position = Vector2(2038, 300)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight20" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight12" type="PointLight2D" parent="Lights" index="13"]
+z_index = 3
+position = Vector2(2134, 237)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight12" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight13" type="PointLight2D" parent="Lights" index="14"]
+z_index = 3
+position = Vector2(2255, 263)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight13" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight16" type="PointLight2D" parent="Lights" index="15"]
+z_index = 3
+position = Vector2(2373, 301)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight16" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight17" type="PointLight2D" parent="Lights" index="16"]
+z_index = 3
+position = Vector2(2495, 241)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight17" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight18" type="PointLight2D" parent="Lights" index="17"]
+z_index = 3
+position = Vector2(2602, 270)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight18" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight22" type="PointLight2D" parent="Lights" index="18"]
+z_index = 3
+position = Vector2(2698, 228)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight22" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight21" type="PointLight2D" parent="Lights" index="19"]
+z_index = 3
+position = Vector2(3233, 319)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight21" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight24" type="PointLight2D" parent="Lights" index="20"]
+z_index = 3
+position = Vector2(3541, 314)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight24" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight44" type="PointLight2D" parent="Lights" index="21"]
+z_index = 3
+position = Vector2(3389, 395)
+scale = Vector2(1.75, 1.75)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight44" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight25" type="PointLight2D" parent="Lights" index="22"]
+z_index = 3
+position = Vector2(3788, 312)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight25" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight26" type="PointLight2D" parent="Lights" index="23"]
+z_index = 3
+position = Vector2(3852, 240)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight26" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight27" type="PointLight2D" parent="Lights" index="24"]
+z_index = 3
+position = Vector2(3977, 281)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight27" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight28" type="PointLight2D" parent="Lights" index="25"]
+z_index = 3
+position = Vector2(4088, 219)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight28" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight29" type="PointLight2D" parent="Lights" index="26"]
+z_index = 3
+position = Vector2(4197, 276)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight29" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight30" type="PointLight2D" parent="Lights" index="27"]
+z_index = 3
+position = Vector2(4427, 207)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight30" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight45" type="PointLight2D" parent="Lights" index="28"]
+z_index = 3
+position = Vector2(4322, 259)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight45" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight31" type="PointLight2D" parent="Lights" index="29"]
+z_index = 3
+position = Vector2(4604, 223)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight31" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight32" type="PointLight2D" parent="Lights" index="30"]
+z_index = 3
+position = Vector2(4700, 137)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight32" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight33" type="PointLight2D" parent="Lights" index="31"]
+z_index = 3
+position = Vector2(4554, 75)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight33" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight34" type="PointLight2D" parent="Lights" index="32"]
+z_index = 3
+position = Vector2(4836, 101)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight34" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight35" type="PointLight2D" parent="Lights" index="33"]
+z_index = 3
+position = Vector2(4879, 215)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight35" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight36" type="PointLight2D" parent="Lights" index="34"]
+z_index = 3
+position = Vector2(5001, 201)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight36" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight37" type="PointLight2D" parent="Lights" index="35"]
+z_index = 3
+position = Vector2(5137, 230)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight37" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight38" type="PointLight2D" parent="Lights" index="36"]
+z_index = 3
+position = Vector2(5247, 180)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight38" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight46" type="PointLight2D" parent="Lights" index="37"]
+z_index = 3
+position = Vector2(5391, 219)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight46" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight39" type="PointLight2D" parent="Lights" index="38"]
+z_index = 3
+position = Vector2(4443, 37)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight39" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight40" type="PointLight2D" parent="Lights" index="39"]
+z_index = 3
+position = Vector2(4281, 55)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight40" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight41" type="PointLight2D" parent="Lights" index="40"]
+z_index = 3
+position = Vector2(4148, 78)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight41" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight42" type="PointLight2D" parent="Lights" index="41"]
+z_index = 3
+position = Vector2(4020, 31)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight42" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight43" type="PointLight2D" parent="Lights" index="42"]
+z_index = 3
+position = Vector2(3893, 68)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight43" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight47" type="PointLight2D" parent="Lights" index="43"]
+z_index = 3
+position = Vector2(3769, 29)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight47" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight48" type="PointLight2D" parent="Lights" index="44"]
+z_index = 3
+position = Vector2(5677, 332)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight48" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight49" type="PointLight2D" parent="Lights" index="45"]
+z_index = 3
+position = Vector2(5915, 343)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight49" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight50" type="PointLight2D" parent="Lights" index="46"]
+z_index = 3
+position = Vector2(5802, 376)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight50" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight51" type="PointLight2D" parent="Lights" index="47"]
+z_index = 3
+position = Vector2(6043, 405)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight51" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight52" type="PointLight2D" parent="Lights" index="48"]
+z_index = 3
+position = Vector2(6200, 395)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight52" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight53" type="PointLight2D" parent="Lights" index="49"]
+z_index = 3
+position = Vector2(6292, 368)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight53" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="AtmosphericLight54" type="PointLight2D" parent="Lights" index="50"]
+z_index = 3
+position = Vector2(6393, 355)
+color = Color(0.839216, 0.827451, 0.411765, 1)
+energy = 0.2
+texture = ExtResource("3_tdrxo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Lights/AtmosphericLight54" index="0"]
+modulate = Color(0.784314, 1, 0.784314, 0.392157)
+texture = ExtResource("4_lmhjv")
+
+[node name="StreetLight" parent="." index="9" instance=ExtResource("3_3wh3e")]
+modulate = Color(1.5, 1.5, 0.5, 1)
+position = Vector2(218, 310)
+
+[node name="StreetLight2" parent="." index="10" instance=ExtResource("3_3wh3e")]
+modulate = Color(1.5, 1.5, 0.5, 1)
+position = Vector2(6079, 310)
+
+[node name="Node" type="Node" parent="." index="11"]
+
+[node name="Spikes" parent="Node" index="0" instance=ExtResource("4_02srj")]
+position = Vector2(319, 354)
+
+[node name="Spikes2" parent="Node" index="1" instance=ExtResource("4_02srj")]
+position = Vector2(420, 354)
+
+[node name="FallingSpike" parent="Node" index="2" instance=ExtResource("5_ptu0c")]
+position = Vector2(530, 191)
+speed = 400
+
+[node name="FallingSpike2" parent="Node" index="3" instance=ExtResource("5_ptu0c")]
+position = Vector2(630, 191)
+speed = 400
+
+[node name="FallingSpike3" parent="Node" index="4" instance=ExtResource("5_ptu0c")]
+position = Vector2(730, 191)
+speed = 400
+
+[node name="FallingSpike4" parent="Node" index="5" instance=ExtResource("5_ptu0c")]
+position = Vector2(1269, 272)
+rotation = 1.5708
+speed = 400
+
+[node name="FallingSpike5" parent="Node" index="6" instance=ExtResource("5_ptu0c")]
+position = Vector2(1190, 111)
+speed = 400
+
+[node name="fallingspikebarrage1" type="Node" parent="." index="12"]
+
+[node name="FallingSpike7" parent="fallingspikebarrage1" index="0" instance=ExtResource("5_ptu0c")]
+position = Vector2(1348, 41)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike7/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike8" parent="fallingspikebarrage1" index="1" instance=ExtResource("5_ptu0c")]
+position = Vector2(1367, 40)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike8/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike9" parent="fallingspikebarrage1" index="2" instance=ExtResource("5_ptu0c")]
+position = Vector2(1386, 40)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike9/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike10" parent="fallingspikebarrage1" index="3" instance=ExtResource("5_ptu0c")]
+position = Vector2(1405, 40)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike10/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike11" parent="fallingspikebarrage1" index="4" instance=ExtResource("5_ptu0c")]
+position = Vector2(1425, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike11/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike12" parent="fallingspikebarrage1" index="5" instance=ExtResource("5_ptu0c")]
+position = Vector2(1445, 40)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike12/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike13" parent="fallingspikebarrage1" index="6" instance=ExtResource("5_ptu0c")]
+position = Vector2(1464, 40)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike13/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike14" parent="fallingspikebarrage1" index="7" instance=ExtResource("5_ptu0c")]
+position = Vector2(1483, 40)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike14/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike15" parent="fallingspikebarrage1" index="8" instance=ExtResource("5_ptu0c")]
+position = Vector2(1502, 40)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike15/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike16" parent="fallingspikebarrage1" index="9" instance=ExtResource("5_ptu0c")]
+position = Vector2(1542, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike16/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike17" parent="fallingspikebarrage1" index="10" instance=ExtResource("5_ptu0c")]
+position = Vector2(1561, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike17/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike18" parent="fallingspikebarrage1" index="11" instance=ExtResource("5_ptu0c")]
+position = Vector2(1580, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike18/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike19" parent="fallingspikebarrage1" index="12" instance=ExtResource("5_ptu0c")]
+position = Vector2(1599, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike19/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike20" parent="fallingspikebarrage1" index="13" instance=ExtResource("5_ptu0c")]
+position = Vector2(1619, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike20/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike21" parent="fallingspikebarrage1" index="14" instance=ExtResource("5_ptu0c")]
+position = Vector2(1639, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike21/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike22" parent="fallingspikebarrage1" index="15" instance=ExtResource("5_ptu0c")]
+position = Vector2(1658, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike22/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike23" parent="fallingspikebarrage1" index="16" instance=ExtResource("5_ptu0c")]
+position = Vector2(1677, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike23/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike24" parent="fallingspikebarrage1" index="17" instance=ExtResource("5_ptu0c")]
+position = Vector2(1696, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike24/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike25" parent="fallingspikebarrage1" index="18" instance=ExtResource("5_ptu0c")]
+position = Vector2(1717, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike25/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike26" parent="fallingspikebarrage1" index="19" instance=ExtResource("5_ptu0c")]
+position = Vector2(1736, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike26/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike27" parent="fallingspikebarrage1" index="20" instance=ExtResource("5_ptu0c")]
+position = Vector2(1755, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike27/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike28" parent="fallingspikebarrage1" index="21" instance=ExtResource("5_ptu0c")]
+position = Vector2(1774, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike28/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike29" parent="fallingspikebarrage1" index="22" instance=ExtResource("5_ptu0c")]
+position = Vector2(1794, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike29/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike30" parent="fallingspikebarrage1" index="23" instance=ExtResource("5_ptu0c")]
+position = Vector2(1814, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike30/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike31" parent="fallingspikebarrage1" index="24" instance=ExtResource("5_ptu0c")]
+position = Vector2(1833, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike31/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike32" parent="fallingspikebarrage1" index="25" instance=ExtResource("5_ptu0c")]
+position = Vector2(1852, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike32/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike33" parent="fallingspikebarrage1" index="26" instance=ExtResource("5_ptu0c")]
+position = Vector2(1871, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike33/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike34" parent="fallingspikebarrage1" index="27" instance=ExtResource("5_ptu0c")]
+position = Vector2(1891, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike34/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike35" parent="fallingspikebarrage1" index="28" instance=ExtResource("5_ptu0c")]
+position = Vector2(1910, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike35/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike36" parent="fallingspikebarrage1" index="29" instance=ExtResource("5_ptu0c")]
+position = Vector2(1929, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike36/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike37" parent="fallingspikebarrage1" index="30" instance=ExtResource("5_ptu0c")]
+position = Vector2(2013, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike37/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike38" parent="fallingspikebarrage1" index="31" instance=ExtResource("5_ptu0c")]
+position = Vector2(2032, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike38/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike39" parent="fallingspikebarrage1" index="32" instance=ExtResource("5_ptu0c")]
+position = Vector2(2051, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike39/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike40" parent="fallingspikebarrage1" index="33" instance=ExtResource("5_ptu0c")]
+position = Vector2(2070, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike40/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike41" parent="fallingspikebarrage1" index="34" instance=ExtResource("5_ptu0c")]
+position = Vector2(2090, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike41/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike42" parent="fallingspikebarrage1" index="35" instance=ExtResource("5_ptu0c")]
+position = Vector2(2110, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike42/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike43" parent="fallingspikebarrage1" index="36" instance=ExtResource("5_ptu0c")]
+position = Vector2(2129, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike43/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike44" parent="fallingspikebarrage1" index="37" instance=ExtResource("5_ptu0c")]
+position = Vector2(2148, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike44/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike45" parent="fallingspikebarrage1" index="38" instance=ExtResource("5_ptu0c")]
+position = Vector2(2167, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike45/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike46" parent="fallingspikebarrage1" index="39" instance=ExtResource("5_ptu0c")]
+position = Vector2(2207, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike46/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike47" parent="fallingspikebarrage1" index="40" instance=ExtResource("5_ptu0c")]
+position = Vector2(2226, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike47/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike48" parent="fallingspikebarrage1" index="41" instance=ExtResource("5_ptu0c")]
+position = Vector2(2245, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike48/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike49" parent="fallingspikebarrage1" index="42" instance=ExtResource("5_ptu0c")]
+position = Vector2(2264, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike49/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike50" parent="fallingspikebarrage1" index="43" instance=ExtResource("5_ptu0c")]
+position = Vector2(2284, 36)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike50/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike51" parent="fallingspikebarrage1" index="44" instance=ExtResource("5_ptu0c")]
+position = Vector2(2304, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike51/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike52" parent="fallingspikebarrage1" index="45" instance=ExtResource("5_ptu0c")]
+position = Vector2(2323, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike52/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike53" parent="fallingspikebarrage1" index="46" instance=ExtResource("5_ptu0c")]
+position = Vector2(2342, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike53/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike54" parent="fallingspikebarrage1" index="47" instance=ExtResource("5_ptu0c")]
+position = Vector2(2361, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike54/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike55" parent="fallingspikebarrage1" index="48" instance=ExtResource("5_ptu0c")]
+position = Vector2(2382, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike55/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike56" parent="fallingspikebarrage1" index="49" instance=ExtResource("5_ptu0c")]
+position = Vector2(2401, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike56/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike57" parent="fallingspikebarrage1" index="50" instance=ExtResource("5_ptu0c")]
+position = Vector2(2420, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike57/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike58" parent="fallingspikebarrage1" index="51" instance=ExtResource("5_ptu0c")]
+position = Vector2(2439, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike58/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike59" parent="fallingspikebarrage1" index="52" instance=ExtResource("5_ptu0c")]
+position = Vector2(2459, 36)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike59/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike60" parent="fallingspikebarrage1" index="53" instance=ExtResource("5_ptu0c")]
+position = Vector2(2479, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike60/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike61" parent="fallingspikebarrage1" index="54" instance=ExtResource("5_ptu0c")]
+position = Vector2(2498, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike61/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike62" parent="fallingspikebarrage1" index="55" instance=ExtResource("5_ptu0c")]
+position = Vector2(2517, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike62/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike63" parent="fallingspikebarrage1" index="56" instance=ExtResource("5_ptu0c")]
+position = Vector2(2536, 37)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike63/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike64" parent="fallingspikebarrage1" index="57" instance=ExtResource("5_ptu0c")]
+position = Vector2(2556, 36)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike64/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike65" parent="fallingspikebarrage1" index="58" instance=ExtResource("5_ptu0c")]
+position = Vector2(2575, 36)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike65/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike67" parent="fallingspikebarrage1" index="59" instance=ExtResource("5_ptu0c")]
+position = Vector2(2187, 38)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike67/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike68" parent="fallingspikebarrage1" index="60" instance=ExtResource("5_ptu0c")]
+position = Vector2(2632, 36)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike68/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike69" parent="fallingspikebarrage1" index="61" instance=ExtResource("5_ptu0c")]
+position = Vector2(2613, 36)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike69/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike66" parent="fallingspikebarrage1" index="62" instance=ExtResource("5_ptu0c")]
+position = Vector2(2594, 36)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike66/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="FallingSpike70" parent="fallingspikebarrage1" index="63" instance=ExtResource("5_ptu0c")]
+position = Vector2(1522, 39)
+speed = 400
+
+[node name="CollisionShape2D" parent="fallingspikebarrage1/FallingSpike70/ActivateZone" index="0"]
+position = Vector2(0, 122.5)
+shape = SubResource("RectangleShape2D_nvnw7")
+
+[node name="MovingPlatform" parent="." index="13" instance=ExtResource("7_xdcf8")]
+modulate = Color(1.25, 1.25, 1.25, 1)
+position = Vector2(2728, 296)
+curve = SubResource("Curve2D_xrx6e")
+duration = 2.0
+
+[node name="Coin" parent="." index="14" instance=ExtResource("8_k6ctv")]
+position = Vector2(3751, 45)
+
+[node name="Node2" type="Node" parent="." index="15"]
+
+[node name="FallingSpike" parent="Node2" index="0" instance=ExtResource("5_ptu0c")]
+position = Vector2(4510, -109)
+speed = 350
+
+[node name="FallingSpike2" parent="Node2" index="1" instance=ExtResource("5_ptu0c")]
+position = Vector2(4489, -109)
+speed = 350
+
+[node name="FallingSpike3" parent="Node2" index="2" instance=ExtResource("5_ptu0c")]
+position = Vector2(4469, -109)
+speed = 350
+
+[node name="FallingSpike4" parent="Node2" index="3" instance=ExtResource("5_ptu0c")]
+position = Vector2(4449, -109)
+speed = 350
+
+[node name="FallingSpike5" parent="Node2" index="4" instance=ExtResource("5_ptu0c")]
+position = Vector2(4310, -109)
+speed = 350
+
+[node name="FallingSpike6" parent="Node2" index="5" instance=ExtResource("5_ptu0c")]
+position = Vector2(4250, -110)
+speed = 350
+
+[node name="FallingSpike7" parent="Node2" index="6" instance=ExtResource("5_ptu0c")]
+position = Vector2(4130, -111)
+speed = 350
+
+[node name="FallingSpike8" parent="Node2" index="7" instance=ExtResource("5_ptu0c")]
+position = Vector2(4010, -109)
+speed = 350
+
+[node name="FallingSpike9" parent="Node2" index="8" instance=ExtResource("5_ptu0c")]
+position = Vector2(3870, -110)
+speed = 350
+
+[node name="TextLabel" parent="." index="16" instance=ExtResource("9_1k0lp")]
+offset_left = 1334.0
+offset_top = 171.0
+offset_right = 1429.0
+offset_bottom = 204.0
+text = "Caution:
+Spikes!"
+
+[node name="TextLabel2" parent="." index="17" instance=ExtResource("9_1k0lp")]
+offset_left = 4488.0
+offset_top = -18.0
+offset_right = 4583.0
+offset_bottom = 15.0
+text = "Caution:
+Spikes!"
+horizontal_alignment = 2
+
+[node name="TextLabel3" parent="." index="18" instance=ExtResource("9_1k0lp")]
+offset_left = 5021.0
+offset_top = 147.0
+offset_right = 5083.0
+offset_bottom = 164.0
+text = "Jump late"
+
+[node name="SendToLevel" parent="." index="19" instance=ExtResource("11_u1b4v")]
+position = Vector2(6170, 280)
+scale = Vector2(1, 8)
+target_level_path = "res://scenes/levels/level_05.tscn"
+
+[node name="Checkpoint" parent="." index="20" instance=ExtResource("12_00nur")]
+position = Vector2(2670, 244)
+scale = Vector2(1, 3)
+
+[node name="Spikes" parent="." index="21" instance=ExtResource("4_02srj")]
+position = Vector2(860, 354)
+
+[editable path="StreetLight"]
+[editable path="StreetLight2"]
+[editable path="fallingspikebarrage1/FallingSpike7"]
+[editable path="fallingspikebarrage1/FallingSpike8"]
+[editable path="fallingspikebarrage1/FallingSpike9"]
+[editable path="fallingspikebarrage1/FallingSpike10"]
+[editable path="fallingspikebarrage1/FallingSpike11"]
+[editable path="fallingspikebarrage1/FallingSpike12"]
+[editable path="fallingspikebarrage1/FallingSpike13"]
+[editable path="fallingspikebarrage1/FallingSpike14"]
+[editable path="fallingspikebarrage1/FallingSpike15"]
+[editable path="fallingspikebarrage1/FallingSpike16"]
+[editable path="fallingspikebarrage1/FallingSpike17"]
+[editable path="fallingspikebarrage1/FallingSpike18"]
+[editable path="fallingspikebarrage1/FallingSpike19"]
+[editable path="fallingspikebarrage1/FallingSpike20"]
+[editable path="fallingspikebarrage1/FallingSpike21"]
+[editable path="fallingspikebarrage1/FallingSpike22"]
+[editable path="fallingspikebarrage1/FallingSpike23"]
+[editable path="fallingspikebarrage1/FallingSpike24"]
+[editable path="fallingspikebarrage1/FallingSpike25"]
+[editable path="fallingspikebarrage1/FallingSpike26"]
+[editable path="fallingspikebarrage1/FallingSpike27"]
+[editable path="fallingspikebarrage1/FallingSpike28"]
+[editable path="fallingspikebarrage1/FallingSpike29"]
+[editable path="fallingspikebarrage1/FallingSpike30"]
+[editable path="fallingspikebarrage1/FallingSpike31"]
+[editable path="fallingspikebarrage1/FallingSpike32"]
+[editable path="fallingspikebarrage1/FallingSpike33"]
+[editable path="fallingspikebarrage1/FallingSpike34"]
+[editable path="fallingspikebarrage1/FallingSpike35"]
+[editable path="fallingspikebarrage1/FallingSpike36"]
+[editable path="fallingspikebarrage1/FallingSpike37"]
+[editable path="fallingspikebarrage1/FallingSpike38"]
+[editable path="fallingspikebarrage1/FallingSpike39"]
+[editable path="fallingspikebarrage1/FallingSpike40"]
+[editable path="fallingspikebarrage1/FallingSpike41"]
+[editable path="fallingspikebarrage1/FallingSpike42"]
+[editable path="fallingspikebarrage1/FallingSpike43"]
+[editable path="fallingspikebarrage1/FallingSpike44"]
+[editable path="fallingspikebarrage1/FallingSpike45"]
+[editable path="fallingspikebarrage1/FallingSpike46"]
+[editable path="fallingspikebarrage1/FallingSpike47"]
+[editable path="fallingspikebarrage1/FallingSpike48"]
+[editable path="fallingspikebarrage1/FallingSpike49"]
+[editable path="fallingspikebarrage1/FallingSpike50"]
+[editable path="fallingspikebarrage1/FallingSpike51"]
+[editable path="fallingspikebarrage1/FallingSpike52"]
+[editable path="fallingspikebarrage1/FallingSpike53"]
+[editable path="fallingspikebarrage1/FallingSpike54"]
+[editable path="fallingspikebarrage1/FallingSpike55"]
+[editable path="fallingspikebarrage1/FallingSpike56"]
+[editable path="fallingspikebarrage1/FallingSpike57"]
+[editable path="fallingspikebarrage1/FallingSpike58"]
+[editable path="fallingspikebarrage1/FallingSpike59"]
+[editable path="fallingspikebarrage1/FallingSpike60"]
+[editable path="fallingspikebarrage1/FallingSpike61"]
+[editable path="fallingspikebarrage1/FallingSpike62"]
+[editable path="fallingspikebarrage1/FallingSpike63"]
+[editable path="fallingspikebarrage1/FallingSpike64"]
+[editable path="fallingspikebarrage1/FallingSpike65"]
+[editable path="fallingspikebarrage1/FallingSpike67"]
+[editable path="fallingspikebarrage1/FallingSpike68"]
+[editable path="fallingspikebarrage1/FallingSpike69"]
+[editable path="fallingspikebarrage1/FallingSpike66"]
+[editable path="fallingspikebarrage1/FallingSpike70"]

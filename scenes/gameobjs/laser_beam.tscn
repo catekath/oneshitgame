@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://gc1nr2xlh65n"]
+
+[ext_resource type="Script" path="res://scripts/gameobjs/laser_beam.gd" id="1_h2ir0"]
+[ext_resource type="Texture2D" uid="uid://1xy0beweddxj" path="res://assets/sprites/red_laser.png" id="1_p7xq5"]
+
+[node name="LaserBeam" type="Line2D"]
+z_index = -1
+points = PackedVector2Array(0, 0, 32, 0)
+width = 2.0
+texture = ExtResource("1_p7xq5")
+texture_mode = 1
+script = ExtResource("1_h2ir0")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 7
