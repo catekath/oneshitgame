@@ -1,0 +1,29 @@
+
+
+# Fonts
+1. VCR_OSD_MONO_1.001.ttf by Riciery Leal aka. mrmanet - https://www.dafont.com/vcr-osd-mono.font
+
+# Textures
+yio iann 
+
+# Music/Ambient
+1. Synthwave House Loop (CC0) by Fupi - https://opengameart.org/content/synthwave-house-loop
+2. Forgotten Lullaby (CC-BY 3.0, and more) by Mega Pixel Music Lab - https://opengameart.org/content/forgotten-lullaby
+3. Far Away (CC BY) by DOS-88 - https://youtu.be/KnVdM2XsNdw
+4. caller (CC-BY 3.0, CC0) by SpringySpringo - https://opengameart.org/content/ambientloading-screen-game-music-pack
+5. Building Rooftops Ambient - https://pixabay.com/sound-effects/building-rooftops-ambient-76133/
+6. Rooftop Rain - https://pixabay.com/sound-effects/rooftop-rain-67102/
+
+# Sound Effects
+1. Stab_Knife_02.mp3 (CC-BY 3.0) by Little Robot Sound Factory - https://opengameart.org/content/horror-sound-effects-library
+2. Spike (CC-BY 3.0) - https://opengameart.org/content/knife-sharpening-slice-1
+3. Checkpoint - https://pixabay.com/sound-effects/collectable-videogame-sound-compilation-31233/
+4. UI clicks, Laser by Kenney (CC0) - https://kenney.nl/
+5. achive_sound by Liecio - https://pixabay.com/sound-effects/achive-sound-132273/
+6. Trampoline - https://pixabay.com/sound-effects/trampoline-27688/
+7. yay sound - https://pixabay.com/sound-effects/yay-6120/
+8. step sounds - https://pixabay.com/sound-effects/running-in-grass-6237/
+9. land by leohpaz (CC-BY 4.0) - https://opengameart.org/content/12-player-movement-sfx
+10. Push object over table by jackmcbrezel - https://pixabay.com/sound-effects/push-object-over-table-113518/
+11. Box Falling Down - https://pixabay.com/sound-effects/box-falling-down-97295/
+12. swing woosh - https://pixabay.com/sound-effects/swing-whoosh-110410/
